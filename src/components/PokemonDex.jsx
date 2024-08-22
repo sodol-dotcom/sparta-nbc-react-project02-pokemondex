@@ -3,17 +3,13 @@
 import React, { useState } from 'react';
 import MOCK_DATA from '../mock';
 import Dashboard from './Dashboard';
+import PokemonList from './PokemonList';
 
 
 function PokemonDex() {
 
   // useState를 사용하여 선택된 포켓몬 관리하는 상태 생성 -> 빈 배열?[], 빈 객체?{}
   const [selectedPokemon, setselectedPokemon] = useState([]);
-
-  // 포켓몬 데이터 배열 (id, name, image 속성 포함)
-  const pokemonList = [
-    
-  ];
 
   // 포켓몬을 선택하는 로직
   const addPokemon = (pokemon) => {
@@ -31,9 +27,10 @@ function PokemonDex() {
 
   return (
     <div>
-      {/* prop */}
+      {/* Dashboard에 prop 전달 */}
       <Dashboard selectedPokemon={selectedPokemon} onRemove={removePokemon} />
-      <pokemonList pokemonList={MOCK_DATA} onAdd={addPokemon} />
+      {/* PokemonList 컴포넌트를 통해 포켓몬을 표시하고 추가하는 로직 구현 */}
+      <PokemonList pokemonList={MOCK_DATA} onAdd={addPokemon} />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 // PokemonCard.jsx -> 개별 포켓몬의 정보를 카드 형식으로 보여주는 컴포넌트
 
-import React from 'react'
+import React from 'react';
+import styled from 'styled-components';
 
 const Card = styled.div`
 
