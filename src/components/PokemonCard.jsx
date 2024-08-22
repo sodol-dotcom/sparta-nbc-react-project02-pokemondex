@@ -1,6 +1,6 @@
 import React from 'react'
 
-function PokemonCard ({ pokemon, onAdd }) {
+function PokemonCard({ pokemon, onAdd }) {
   return (
     <div>
       PokemonCard

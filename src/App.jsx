@@ -11,12 +11,12 @@ const App = () => {
       <nav>
         <ul>
           <li><Link to="/">Home</Link> </li>
-          <li><Link to="/pokedex">Pokedex</Link></li>
+          <li><Link to="/Pokedex">Pokedex</Link></li>
         </ul>
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/pokedex" element={<Pokedex />} />
+        <Route path="/Pokedex" element={<Pokedex />} />
       </Routes>
     </Router>
   );
