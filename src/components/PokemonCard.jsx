@@ -4,23 +4,30 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Card = styled.div`
+width: 100px;
+height: 150px;
+background-color: red;
+margin: 10px;
+border: 20px;
 
 `;
 
 const Button = styled.button`
+color: white;
+border: none;
+padding: 8px 16px;
+border-radius: 4px;
+cursor: pointer;
+margin-top: 12px;
 
 `;
 
-function PokemonCard({ pokemon, onAdd, onRemove, isSlected }) {
+function PokemonCard({ pokemon, onAdd }) {
   return (
-    <Card>
-      <img src={pokemon.image} alt={pokemon.korean_name} />    {/* alt는 이미지가 나오지 않을때의 대체 텍스트 */}
-      <p>{ppokemon.korean_name}</p>
-      {isSlected ? (
-        <Button onClick={() => {onRemove(pokemon)}}>삭제</Button>
-      ) : (
+    <Card key={pokemon.id}>
+      <img src={pokemon.img_url} alt={pokemon.korean_name} />    {/* alt는 이미지가 나오지 않을때의 대체 텍스트 */}
+      <p>{pokemon.korean_name}</p>
         <Button onClick={() => {onAdd(pokemon)}}>추가</Button>
-      )}
     </Card>
   );
 }

@@ -8,6 +8,8 @@ const DashboardContainer = styled.div`
 `;
 
 const Dashboard = ({ selectedPokemon, onRemove }) => {
+  console.log("Selected Pokemon IDs:", selectedPokemon.map(pokemon => pokemon.id));
+
   return (
     <DashboardContainer>
       {/* 선택된 포켓몬 정보 표시하는 내용 추가 */}
@@ -17,17 +19,16 @@ const Dashboard = ({ selectedPokemon, onRemove }) => {
       ) : (
         <ul>
           {selectedPokemon.map((pokemon) => (
-            <li key={Pokemon.id}>{pokemon.korean_name}</li>
+            <li key={pokemon.id}>
+              <div>
+                <img src={pokemon.img_url} alt={pokemon.korean_name} />
+                <h3>{pokemon.korean_name}</h3>
+                <button onClick={() => onRemove(pokemon)}>삭제</button>
+              </div>
+            </li>
           ))}
         </ul>
       )}
-      {selectedPokemon.map((pokemon) => (
-        <div key={pokemon.id}>
-          <img src={pokemon.image} alt={pokemon.korean_name} />
-          <h3>{pokemon.korean_name}</h3>
-          <button onClick={() => onRemove(pokemon)}>삭제</button>
-        </div>
-      ))}
     </DashboardContainer>
   );
 };
