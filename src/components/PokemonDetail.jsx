@@ -7,9 +7,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import MOCK_DATA from "../mock";
 
 function PokemonDetail() {
-  const { id } = useParams(); // URL에서 ID를 받아옴
+  const { pokemonId } = useParams(); // URL에서 ID를 받아옴
   const navigate = useNavigate(); //
-  const pokemon = MOCK_DATA.find((p) => p.id === Number(id)); // 포켓몬 데이터 ID로 찾기
+  const pokemon = MOCK_DATA.find((p) => p.id === Number(pokemonId)); // 포켓몬 데이터 ID로 찾기
 
   // 예외 처리 연습: 포켓몬을 찾지 못했을 경우 예외 처리
   if(!pokemon){

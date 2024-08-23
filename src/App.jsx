@@ -8,27 +8,37 @@ import PokemonDetail from './components/PokemonDetail';
 import PokemonDex from './components/PokemonDex'
 import MOCK_DATA from './mock';
 
-const nav = styled.nav`
+const Nav = styled.nav`
   background-color: yellow;
+  padding: 10px;
 `;
 
 const List = styled.ul`
+  list-style-type: none;
   background-color: blue;
+  padding: 0;
+  margin: 0;
   `;
 
 const ListItem = styled.li`
+  display: inline;
+  margin-right: 10px;
+  a {
+    color: white;
+    text-decoration: none;
+  }
   background-color: green;
 `;
 
 function App() {
   return (
     <Router> {/* Router=BrowserRouter의 별칭. BrowserRouter로 Router를 감싼다. */}
-      <nav>
+      <Nav>
         <List>
           <ListItem><Link to="/">Home</Link> </ListItem>
           <ListItem><Link to="/PokemonDex">PokemonDex</Link></ListItem>
         </List>
-      </nav>
+      </Nav>
       <Routes>
         <Route path="/" element={<Home />} />
         {/* 포켓몬도감과 디테일페이지 추가 */}
