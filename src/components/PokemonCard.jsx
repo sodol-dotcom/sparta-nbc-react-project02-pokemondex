@@ -4,11 +4,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Card = styled.div`
-width: 100px;
-height: 150px;
-background-color: red;
+width: 200px;
+height: 300px;
 margin: 10px;
 border: 20px;
+
+background-color: red;
 
 `;
 
