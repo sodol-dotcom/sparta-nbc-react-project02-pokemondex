@@ -4,9 +4,9 @@ import styled, { createGlobalStyle, keyframes } from "styled-components";
 import Home from "./components/Home";
 import PokemonDetail from "./components/PokemonDetail";
 import PokemonDex from "./components/PokemonDex";
-import MyButtonComponent from "./components/MyButtonComponent";
 import MOCK_DATA from "./mock";
 import MusicPlayer from "./components/MusicPlayer"; // 플레이어 컴포넌트 임포트
+import { PokemonProvider } from "./context/PokemonContext";
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -115,37 +115,39 @@ function App() {
   };
 
   return (
-    <Router>
-      <GlobalStyle />
-      <Nav>
-        <List>
-          <ListItem>
-            <Link to="/">Home</Link>
-          </ListItem>
-          <ListItem>
-            <Link to="/PokemonDex">PokemonDex</Link>
-          </ListItem>
-          <PlayButton $isActive={isActive} onClick={handlePlay}>
-            {isPlaying ? "Pause Music" : "Play Music"}
-          </PlayButton>
-        </List>
-      </Nav>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route
-          path="/PokemonDex"
-          element={<PokemonDex pokemonData={MOCK_DATA} />}
-        />
-        <Route path="/PokemonDetail/:pokemonId" element={<PokemonDetail />} />
-      </Routes>
-      <MusicPlayer ref={audioRef} />
-      <FloatingMessage $isVisible={showMessage}>
-        Please click the button at the top to play music!
-      </FloatingMessage>
-      <Footer>
-        &copy; Created by Sodol | Sparta Coding Club Frontend Bootcamp
-      </Footer>
-    </Router>
+    <PokemonProvider>
+      <Router>
+        <GlobalStyle />
+        <Nav>
+          <List>
+            <ListItem>
+              <Link to="/">Home</Link>
+            </ListItem>
+            <ListItem>
+              <Link to="/PokemonDex">PokemonDex</Link>
+            </ListItem>
+            <PlayButton $isActive={isActive} onClick={handlePlay}>
+              {isPlaying ? "Pause Music" : "Play Music"}
+            </PlayButton>
+          </List>
+        </Nav>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route
+            path="/PokemonDex"
+            element={<PokemonDex pokemonData={MOCK_DATA} />}
+          />
+          <Route path="/PokemonDetail/:pokemonId" element={<PokemonDetail />} />
+        </Routes>
+        <MusicPlayer ref={audioRef} />
+        <FloatingMessage $isVisible={showMessage}>
+          Please click the button at the top to play music!
+        </FloatingMessage>
+        <Footer>
+          &copy; Created by Sodol | Sparta Coding Club Frontend Bootcamp
+        </Footer>
+      </Router>
+    </PokemonProvider>
   );
 }
 

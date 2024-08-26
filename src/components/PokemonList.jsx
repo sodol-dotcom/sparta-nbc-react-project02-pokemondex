@@ -4,6 +4,7 @@ import React from "react";
 import styled from "styled-components"; // styled-components import cnrk
 import PokemonCard from "./PokemonCard";
 import background from "../assets/background.jpg";
+import { usePokemon } from "../context/PokemonContext";
 
 // ListContainer 스타일 컴포넌트
 const ListContainer = styled.div`
@@ -44,7 +45,9 @@ const List = styled.div`
   margin: 0 auto; /* 리스트를 가운데 정렬 */
 `;
 
-const PokemonList = ({ pokemonList, onAdd, selectedPokemon }) => {
+const PokemonList = ({ pokemonList }) => {
+  const { selectedPokemon, addPokemon } = usePokemon();   // Context 훅 사용
+
   const handleAdd = (pokemon) => {
     // 선택된 포켓몬 목록에 해당 포켓몬이 이미 있는지 확인
     const isAlreadySelected = selectedPokemon.some(
@@ -55,14 +58,14 @@ const PokemonList = ({ pokemonList, onAdd, selectedPokemon }) => {
       // 이미 선택된 포켓몬인 경우는 경고 메세지 표시
       alert(`${pokemon.korean_name}은(는) 이미 선택된 포켓몬입니다.`);
     } else {
-      onAdd(pokemon); // 이미 선택된 포켓몬 목록에 없는 경우에만 추가
+      addPokemon(pokemon); // 이미 선택된 포켓몬 목록에 없는 경우에만 추가
     }
   };
 
   return (
     <ListContainer>
       <TextContainer>
-      카드를 클릭하면 포켓몬의 자세한 정보를 확인할 수 있어요.
+      🔍 카드를 클릭하여 포켓몬의 비밀을 탐험해보세요! 
       </TextContainer>
       <List>
         {pokemonList.map((pokemon) => (

@@ -3,6 +3,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { usePokemon } from "../context/PokemonContext";  // Context 훅 임포트
 
 const Card = styled.div`
   width: 200px;
@@ -62,8 +63,9 @@ const PokemonName = styled.p`
   text-align: center; /* 텍스트 중앙 정렬 */
   `;
 
-function PokemonCard({ pokemon, onAdd }) {
-  const navigate = useNavigate(); // useNavigate 훅 사용
+function PokemonCard({ pokemon, onAdd, isSelected }) {
+  const navigate = useNavigate();       // useNavigate 훅 사용
+  const { addPokemon } = usePokemon();  // Context 훅 사용
 
   const handleCardClick = () => {
     navigate(`/PokemonDetail/${pokemon.id}`); // 포켓몬 상세 페이지로 이동
@@ -72,18 +74,20 @@ function PokemonCard({ pokemon, onAdd }) {
   const handleButtonClick = (e) => {
     e.stopPropagation(); // 클릭 이벤트가 카드로 전파되는 것을 방지
     console.log("버튼 클릭됨");
-    onAdd(pokemon); // 포켓몬 추가
+    onAdd(pokemon); // Context의 addPokemon 메서드 호출
   };
 
   return (
     // 카드 클릭 시 handleCardClick 호출
     <>
       <Card onClick={handleCardClick}>
-      <PokemonNO>NO.{pokemon.id}</PokemonNO>
+        <PokemonNO>NO.{pokemon.id}</PokemonNO>
         <img src={pokemon.img_url} alt={pokemon.korean_name} />{" "}
         {/* alt는 이미지가 나오지 않을때의 대체 텍스트 */}
         <PokemonName>{pokemon.korean_name}</PokemonName>
-        <StyledButton className="rpgui-button" onClick={handleButtonClick}>추가</StyledButton>
+        <StyledButton className="rpgui-button" onClick={handleButtonClick}>
+          {isSelected ? "선택됨" : "추가"}
+        </StyledButton>
       </Card>
     </>
   );

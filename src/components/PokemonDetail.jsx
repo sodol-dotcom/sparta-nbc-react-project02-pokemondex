@@ -99,8 +99,8 @@ const BackButton = styled.button`
 
 
 function PokemonDetail() {
-  const { pokemonId } = useParams(); // URL에서 ID를 받아옴
-  const navigate = useNavigate(); //
+  const { pokemonId } = useParams();    // URL에서 ID를 받아옴
+  const navigate = useNavigate();       // useNavigate 훅 사용
   const pokemon = MOCK_DATA.find((p) => p.id === Number(pokemonId)); // 포켓몬 데이터 ID로 찾기
 
   // 예외 처리 연습: 포켓몬을 찾지 못했을 경우 예외 처리

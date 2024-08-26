@@ -6,6 +6,7 @@ import logo from "../assets/logo.png";
 import homebackground from "../assets/homebackground.jpg"
 
 
+
 // 스타일 정의
 const DashboardContainer = styled.div`
   display: flex;
