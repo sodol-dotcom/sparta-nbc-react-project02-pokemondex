@@ -18,8 +18,16 @@ const ListContainer = styled.div`
 
   background-image: url(${background}); /* 배경 이미지 설정 */
   background-size: 100% auto; /* 배경 이미지를 컨테이너 전체에 맞추어 확대/축소 */
-  background-position: top center; /* 수직으로는 상단에서 시작 */
-  background-repeat: repeat-y; /* 배경 이미지를 세로 방향으로 반복 */
+  background-position: top center;
+  background-repeat: no-repeat;
+
+  @media (max-width: 768px) {
+    padding: 0 10px; /* 작은 화면에서 패딩 조정 */
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 5px; /* 더 작은 화면에서 패딩 조정 */
+  }
 `;
 
 const TextContainer = styled.div`
@@ -36,13 +44,21 @@ const TextContainer = styled.div`
 // List 스타일 컴포넌트
 const List = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 열 자동 조절 */
-  grid-column-gap: 20px; /* 열 간격을 조정 */
-  grid-row-gap: 15px; /* 행 간격을 조정 (위아래 간격을 50px로 설정) */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* 열 자동 조절 */
+  grid-gap: 20px; /* 열, 행 간격을 조정 */
   padding: 30px; /* 전체 리스트의 패딩 */
   max-width: 1200px; /* 최대 너비 설정 */
+  width: 100%;
   box-sizing: border-box; /* 패딩을 포함한 너비 계산 */
   margin: 0 auto; /* 리스트를 가운데 정렬 */
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* 작은 화면에서 열 크기 조정 */
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* 더 작은 화면에서 열 크기 조정 */
+  }
 `;
 
 const PokemonList = ({ pokemonList }) => {

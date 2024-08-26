@@ -11,6 +11,8 @@ const DashboardContainer = styled.div`
   align-items: center;
   width: 100%;
   padding: 36px;
+  padding-left: 6%;
+  padding-right: 6%;
   gap: 20px;
   margin: 0px auto; /* 자동으로 가운데 정렬 */
   box-sizing: border-box; /* 패딩을 포함한 너비 계산 */
@@ -18,10 +20,20 @@ const DashboardContainer = styled.div`
 
 const PokemonGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(6, 1fr); /* 6개의 열을 설정 */
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* 반응형 레이아웃 */
   gap: 10px; /* 카드들 사이의 간격 */
   box-sizing: border-box; /* 패딩을 포함한 너비 계산 */
   margin: 0 auto; /* 가로 중앙 정렬 */
+  width: 100%;
+  max-width: 1200px;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* 태블릿 크기 */
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* 모바일 크기 */
+  }
 `;
 
 const PokemonCard = styled.div`
@@ -32,15 +44,18 @@ const PokemonCard = styled.div`
   align-items: center;
   border: 1px solid #ddd; /* 카드의 테두리 */
   border-radius: 4px; /* 카드의 둥근 모서리 */
-  padding: 8px;
-  width: 180px; /* 카드의 너비 */
-  height: 210px; /* 카드의 높이 */
-  text-align: center;
+  padding: 20px;
+  height: auto; /* 높이를 자동으로 설정 */
   box-sizing: border-box; /* 패딩을 포함한 너비 계산 */
+  margin: 5px; /* 카드 사이의 간격을 좁힘 */
+  padding-left: 30px;
+  padding-right: 30px;
+
 
   img {
-    width: 100px; /* 이미지의 너비 설정 */
-    height: 100px; /* 이미지의 높이 설정 */
+    magin-top: 10px;
+    width: 65%; /* 이미지의 상대적 너비 설정 */
+    height: auto;
     object-fit: cover; /* 이미지 비율 유지 */
     border-radius: 4px; /* 이미지의 둥근 모서리 */
   }
@@ -79,7 +94,6 @@ const PokemonNO = styled.p`
   display: flex;
   justify-content: center; /* 텍스트 수평 중앙 정렬 */
   align-items: center; /* 텍스트 수직 중앙 정렬 */
-  margin-bottom: 5px; /* 아래쪽 여백 추가 */
   `;
 
 const Message = styled.p`
