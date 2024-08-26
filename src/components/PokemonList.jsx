@@ -65,7 +65,7 @@ const PokemonList = ({ pokemonList }) => {
   return (
     <ListContainer>
       <TextContainer>
-      🔍 카드를 클릭하여 포켓몬의 비밀을 탐험해보세요! 
+      카드를 클릭하여 포켓몬의 비밀을 탐험해보세요! 
       </TextContainer>
       <List>
         {pokemonList.map((pokemon) => (
